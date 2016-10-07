@@ -1,22 +1,41 @@
 $(document).ready(function(){
     
-    //computing position of target ang source
-    var $target_height = $("#target").height();
-    var $target_width = $("#target").width();
-    var $source_height = $("#source").height();
-    var $source_width = $("#source").width();
+    //getting intial position of source
+    var $initialSrc = $("#source").position();
     
-    //alert("target "+$target_height+" " +$target_width);
-    //alert("source "+$source_height+" "+$source_width);
     
     //set random position for target
     $("#target").css({
         'left': Math.random()* 90 + '%',
-        'top': Math.random()* 90 + '%'
+        'bottom': Math.random()* 80 + '%'
     });
     
-    var $target_height = $("#target").height();
-    var $target_width = $("#target").width();
+    //calculates target's position
+    var $targetPosn = $("#target").position();
     
-    //alert("target_new "+$target_height+" "+$target_width);
+    //finds current source position
+    var $sourcePosn = $("#source").position();
+    
+    //moves source up, down, left and right on key press
+    $(document).keydown(function(event){
+        
+        var key = event.which;
+        if (key==37){
+            //left key
+            $("#source").animate({left: '-=10px'},50);
+        }
+        if (key==38){
+            //up key
+            $("#source").animate({top: '-=10px'},50);
+        }
+        if (key==39){
+            //right key
+            $("#source").animate({left: '+=10px'},50);
+        }
+        if (key==40){
+            //down key
+            $("#source").animate({top: '+=10px'},50);
+        }
+        
+    });
 });
