@@ -1,0 +1,33 @@
+body{
+    margin: 0px;
+}
+
+#header{
+    background-color: black;
+}
+
+#header:after{
+    content: "";
+    clear: both;
+    display: block;
+}
+
+#header p{
+    display: inline-block;
+    color: white;
+    text-transform: capitalize;
+    padding: 10px;
+}
+
+#header p:nth-child(1){
+    float: left;
+}
+
+#header p:nth-child(2){
+    float: right;
+}
+
+#source, #target{
+    display: inline-block;
+    position: absolute;
+}
