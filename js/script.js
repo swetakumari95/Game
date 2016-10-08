@@ -1,5 +1,10 @@
 $(document).ready(function(){
     
+    //getting intial position of source
+    var $initialSrc = $("#source").position();
+    var score = 0;
+    var hit = 0;
+    
     //calls main function
     main();
     
@@ -9,7 +14,6 @@ $(document).ready(function(){
             'left': Math.random()* 90 + '%',
             'bottom': Math.random()* 80 + '%'
         });
-        $("target").show();
     };
     
     function detectKeyPress($targetPosn, event){
@@ -35,7 +39,7 @@ $(document).ready(function(){
                             $('#score').html("SCORE : "+ score);
                             
                         }else if (hit==1){
-                            $("target").show();
+                            $("#target").show();
                             hit=0;
                             main();
                         }
@@ -53,13 +57,13 @@ $(document).ready(function(){
                         var $sourcePosn = $("#source").position();
                         if (Math.abs($targetPosn.top-$sourcePosn.top)<=50 && Math.abs($targetPosn.left-$sourcePosn.left)<=50 && hit==0){
                             hit=1;
-                            $('#target').hide('explode',2000).show();
+                            $('#target').hide('explode',2000);
                             //increase score
                             score += 1;
                             $('#score').html("SCORE : "+ score);
                             
                         }else if (hit==1){
-                            $("target").show();
+                            $("#target").show();
                             hit=0;
                             main();
                         }
@@ -77,13 +81,13 @@ $(document).ready(function(){
                         var $sourcePosn = $("#source").position();
                         if (Math.abs($targetPosn.top-$sourcePosn.top)<=50 && Math.abs($targetPosn.left-$sourcePosn.left)<=50 && hit==0){
                             hit=1;
-                            $('#target').hide('explode',2000).show();
+                            $('#target').hide('explode',2000);
                             //increase score
                             score += 1;
                             $('#score').html("SCORE : "+ score);
                             
                         }else if (hit==1){
-                            $("target").show();
+                            $("#target").show();
                             hit=0;
                             main();
                         }
@@ -101,12 +105,12 @@ $(document).ready(function(){
                         var $sourcePosn = $("#source").position();
                         if (Math.abs($targetPosn.top-$sourcePosn.top)<=50 && Math.abs($targetPosn.left-$sourcePosn.left)<=50 && hit==0){
                             hit=1;
-                            $('#target').hide('explode',2000).show();
+                            $('#target').hide('explode',2000);
                             //increase score
                             score += 1;
                             $('#score').html("SCORE : "+ score);
                         }else if (hit==1){
-                            $("target").show();
+                            $("#target").show();
                             hit=0;
                             main();
                         }
@@ -116,15 +120,7 @@ $(document).ready(function(){
         });
     };
     
-    
-    //getting intial position of source
-    var $initialSrc = $("#source").position();
-    var score = 0;
-    var hit = 0;
-    
     function main(){
-        
-        $(document).delay(5000);
     
         randomTargetPosition();
         
@@ -137,4 +133,5 @@ $(document).ready(function(){
         detectKeyPress($targetPosn, event);   
         
     }
+    
 });
