@@ -5,6 +5,16 @@ $(document).ready(function(){
     var score = 0;
     var hit = 0;
     
+    var startTime = 60;
+    var countDown = setInterval(function (){
+        $("#timer").html("TIMER : "+ startTime);
+        if (startTime==0){
+            clearInterval(countDown);
+            alert("Time over, your score is "+ score);
+        }
+        startTime--;
+    }, 1000);
+    
     //calls main function
     main();
     
@@ -33,13 +43,11 @@ $(document).ready(function(){
                         var $sourcePosn = $("#source").position();
                         if (Math.abs($targetPosn.top-$sourcePosn.top)<=50 && Math.abs($targetPosn.left-$sourcePosn.left)<=50 && hit==0){
                             hit=1;
-                            $('#target').hide('explode',2000);
                             //increase score
                             score += 1;
                             $('#score').html("SCORE : "+ score);
                             
                         }else if (hit==1){
-                            $("#target").show();
                             hit=0;
                             main();
                         }
@@ -57,13 +65,11 @@ $(document).ready(function(){
                         var $sourcePosn = $("#source").position();
                         if (Math.abs($targetPosn.top-$sourcePosn.top)<=50 && Math.abs($targetPosn.left-$sourcePosn.left)<=50 && hit==0){
                             hit=1;
-                            $('#target').hide('explode',2000);
                             //increase score
                             score += 1;
                             $('#score').html("SCORE : "+ score);
                             
                         }else if (hit==1){
-                            $("#target").show();
                             hit=0;
                             main();
                         }
@@ -81,13 +87,11 @@ $(document).ready(function(){
                         var $sourcePosn = $("#source").position();
                         if (Math.abs($targetPosn.top-$sourcePosn.top)<=50 && Math.abs($targetPosn.left-$sourcePosn.left)<=50 && hit==0){
                             hit=1;
-                            $('#target').hide('explode',2000);
                             //increase score
                             score += 1;
                             $('#score').html("SCORE : "+ score);
                             
                         }else if (hit==1){
-                            $("#target").show();
                             hit=0;
                             main();
                         }
@@ -105,12 +109,10 @@ $(document).ready(function(){
                         var $sourcePosn = $("#source").position();
                         if (Math.abs($targetPosn.top-$sourcePosn.top)<=50 && Math.abs($targetPosn.left-$sourcePosn.left)<=50 && hit==0){
                             hit=1;
-                            $('#target').hide('explode',2000);
                             //increase score
                             score += 1;
                             $('#score').html("SCORE : "+ score);
                         }else if (hit==1){
-                            $("#target").show();
                             hit=0;
                             main();
                         }
@@ -121,6 +123,8 @@ $(document).ready(function(){
     };
     
     function main(){
+        
+        
     
         randomTargetPosition();
         
