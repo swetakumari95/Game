@@ -5,10 +5,6 @@ body{
     font-family: Open Sans, sans-serif;
 }
 
-#header{
-    background-color: black;
-}
-
 #header:after{
     content: "";
     clear: both;
@@ -18,8 +14,12 @@ body{
 #header p{
     display: inline-block;
     color: white;
+    background-color: seagreen;
     text-transform: capitalize;
-    padding: 10px;
+    margin: 10px;
+    padding: 0px 10px 0px 10px;
+    border: 2px solid seagreen;
+    border-radius: 2px;
 }
 
 #header p:nth-child(1){
@@ -33,4 +33,40 @@ body{
 #source, #target{
     display: inline-block;
     position: absolute;
+}
+
+.box{
+    color: seagreen;
+    display: flex;
+    justify-content: center;
+    transition: opacity 300ms ease-in-out 1s;
+}
+
+.hide{
+    display: none;
+}
+
+#gameover{
+    padding: 10px;
+    border: 2px solid seagreen;
+    border-radius: 10px;
+    text-align: center;
+    flex-basis: 300px;
+}
+
+#replay{
+    display: inline;
+    background-color: seagreen;
+    padding: 5px;
+    border-radius: 5px;
+    
+}
+
+#replay:hover{
+    background-color: mediumseagreen;
+}
+
+#replay a{
+    text-decoration: none;
+    color: white;
 }

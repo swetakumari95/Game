@@ -10,7 +10,21 @@ $(document).ready(function(){
         $("#timer").html("TIMER : "+ startTime);
         if (startTime==0){
             clearInterval(countDown);
-            alert("Time over, your score is "+ score);
+            $("#scoredialog").html("Your score is "+ score);
+            if (score<=5){
+                $("#comments").html("You can do much better! :/");
+            }else if (score<=10){
+                $("#comments").html("Great going, those evil piggies had it coming! :D");
+            }else if (score<=15){
+                $("#comments").html("Awesome! You've made the birds proud! :P");
+            }else{
+                $("#comments").html("Superb!You've saved the bird's, you're the hero! :)");
+            }
+            
+            $(".box").removeClass("hide");
+            $("#replay").click(function(){
+                $(".box").addClass("hide");
+            });
         }
         startTime--;
     }, 1000);
