@@ -1,16 +1,32 @@
 $(document).ready(function(){
     
-    //getting intial position of source
+    //setting the initial values
     var $initialSrc = $("#source").position();
     var score = 0;
     var hit = 0;
-    
     var startTime = 60;
+    
+    //for timer, counts down from 60 to 0
     var countDown = setInterval(function (){
+        
+        //changes the time every second
         $("#timer").html("TIMER : "+ startTime);
+        
+        //gets player's attention, only 5 secs left
+        if (startTime<=5){
+            $("#timer").css({'color': 'red'});
+        }
+        
+        //displays game over box if time=0
         if (startTime==0){
+            
+            //clears the count down
             clearInterval(countDown);
+            
+            //sets the score to be displayed
             $("#scoredialog").html("Your score is "+ score);
+            
+            //customized message according to the score
             if (score<=5){
                 $("#comments").html("You can do much better! :/");
             }else if (score<=10){
@@ -18,21 +34,37 @@ $(document).ready(function(){
             }else if (score<=15){
                 $("#comments").html("Awesome! You've made the birds proud! :P");
             }else{
-                $("#comments").html("Superb!You've saved the bird's, you're the hero! :)");
+                $("#comments").html("Superb!You're the hero, but hope you didn't break your keyboard playing this! :P");
             }
             
+            //allows the box to appear
             $(".box").removeClass("hide");
+            
+            //hides the bird and pig from screen
+            $("#source").addClass("hide");
+            $("#target").addClass("hide");
+            $("#timer").addClass("hide");
+            $("#score").addClass("hide");
+            
+            //resets the game if replay button is clicked
             $("#replay").click(function(){
+                
+                //resets the defaults
                 $(".box").addClass("hide");
+                $("#source").removeClass("hide");
+                $("#target").removeClass("hide");
+                $("#timer").removeClass("hide");
+                $("#score").removeClass("hide");
             });
         }
+        //decreases the start time
         startTime--;
     }, 1000);
     
     //calls main function
     main();
     
-    //set random position for target
+    //sets random position for target
     function randomTargetPosition(){
         $("#target").css({
             'left': Math.random()* 90 + '%',
@@ -40,6 +72,7 @@ $(document).ready(function(){
         });
     };
     
+    //detects key press and moves the bird accordingly
     function detectKeyPress($targetPosn, event){
         
         //moves source up, down, left and right on key press
@@ -47,12 +80,13 @@ $(document).ready(function(){
             
             var key = event.which;
             if (key==37){
-                //left key
+                //left arrow is pressed
                 $("#source").animate(
                     {left: '-=10px'},
                     {duration : 50,
                     progress: function(){
-                        //checks for colission in each and every frame of movement
+                        
+                        //checks for collission in each and every frame of movement
                         var $targetPosn = $("#target").position();
                         var $sourcePosn = $("#source").position();
                         if (Math.abs($targetPosn.top-$sourcePosn.top)<=50 && Math.abs($targetPosn.left-$sourcePosn.left)<=50 && hit==0){
@@ -69,11 +103,12 @@ $(document).ready(function(){
                 );
             }
             if (key==38){
-                //up key
+                //up arrow is pressed
                 $("#source").animate(
                     {top: '-=10px'},
                     {duration : 50,
                     progress: function(){
+                        
                         //checks for colission in each and every frame of movement
                         var $targetPosn = $("#target").position();
                         var $sourcePosn = $("#source").position();
@@ -91,11 +126,12 @@ $(document).ready(function(){
                 );
             }
             if (key==39){
-                //right key
+                //right arrow is pressed
                 $("#source").animate(
                     {left: '+=10px'},
                     {duration : 50,
                     progress: function(){
+                        
                         //checks for colission in each and every frame of movement
                         var $targetPosn = $("#target").position();
                         var $sourcePosn = $("#source").position();
@@ -113,11 +149,12 @@ $(document).ready(function(){
                 );
             }
             if (key==40){
-                //down key
+                //down arrow is pressed
                 $("#source").animate(
                     {top: '+=10px'},
                     {duration : 50,
                     progress: function(){
+                        
                         //checks for colission in each and every frame of movement
                         var $targetPosn = $("#target").position();
                         var $sourcePosn = $("#source").position();
@@ -138,8 +175,7 @@ $(document).ready(function(){
     
     function main(){
         
-        
-    
+        //puts the target in random position on the screen
         randomTargetPosition();
         
         //calculates target's position
@@ -147,7 +183,8 @@ $(document).ready(function(){
 
         //finds current source position
         var $sourcePosn = $("#source").position();
-
+        
+        //detects ant keypress
         detectKeyPress($targetPosn, event);   
         
     }
