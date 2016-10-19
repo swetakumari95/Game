@@ -38,7 +38,7 @@ $(document).ready(function(){
             }
             
             //allows the box to appear
-            $(".box").removeClass("hide");
+            $(".box").removeClass("hide").slideUp(10).slideDown(1000);
             
             //hides the bird and pig from screen
             $("#source").addClass("hide");
