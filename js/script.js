@@ -80,6 +80,16 @@ $(document).ready(function(){
             
             var winHeight = $(window).height();
             var winWidth = $(window).width();
+            var $sourcePosn = $("#source").position();
+            var stopAnimation = 0;
+            
+            if ($sourcePosn.left==0 || ($sourcePosn.left+50)==winWidth || $sourcePosn.top==0 || ($sourcePosn.top+50)==winHeight){
+                $("#source").stop();
+                stopAnimation = 1;
+            }
+            else{
+                stopAnimation = 0;
+            }
             
             var key = event.which;
             if (key==37){
