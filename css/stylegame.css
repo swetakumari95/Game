@@ -47,12 +47,12 @@ body{
 }
 
 #gameover{
+    margin: 20vh auto;
     padding: 10px;
     border: 2px solid seagreen;
     border-radius: 10px;
     text-align: center;
     flex-basis: 300px;
-    transition: opacity 1000ms ease-in-out 1s;
 }
 
 #replay{

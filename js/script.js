@@ -13,8 +13,8 @@ $(document).ready(function(){
         $("#timer").html("TIMER : "+ startTime);
         
         //gets player's attention, only 5 secs left
-        if (startTime<=5){
-            $("#timer").css({'color': 'red'});
+        if (startTime<=10){
+            $("#timer").css({backgroundColor:"red", borderColor:"red"}).effect("pulsate",{times:1}, 1000);
         }
         
         //displays game over box if time=0
@@ -77,6 +77,9 @@ $(document).ready(function(){
         
         //moves source up, down, left and right on key press
         $(document).keydown(function(event){
+            
+            var winHeight = $(window).height();
+            var winWidth = $(window).width();
             
             var key = event.which;
             if (key==37){
