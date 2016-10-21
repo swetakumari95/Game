@@ -85,11 +85,14 @@ $(document).ready(function(){
             //to prevent the bird from moving out of the screen
             if($sourcePosn.left<=0){
                 $("#source").css({"left": 0});
-            }else if(($sourcePosn.left+65)>=winWidth){
+            }
+            if(($sourcePosn.left+65)>=winWidth){
                 $("#source").css({"left": winWidth-65});
-            }else if($sourcePosn.top<=0){
+            }
+            if($sourcePosn.top<=0){
                 $("#source").css({"top": 0});
-            }else if(($sourcePosn.top+65)>=winHeight){
+            }
+            if(($sourcePosn.top+65)>=winHeight){
                 $("#source").css({"top": winHeight-65});
             }
             
