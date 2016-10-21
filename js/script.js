@@ -81,15 +81,16 @@ $(document).ready(function(){
             var winHeight = $(window).height();
             var winWidth = $(window).width();
             var $sourcePosn = $("#source").offset();
-            var stopAnimation = 0;
             
-            if ($sourcePosn.left<=0 || ($sourcePosn.left+50)>=winWidth || $sourcePosn.top<=0 || ($sourcePosn.top+50)>=winHeight){
-                
-                $("#source").stop();
-                stopAnimation = 1;
-            }
-            else{
-                stopAnimation = 0;
+            //to prevent the bird from moving out of the screen
+            if($sourcePosn.left<=0){
+                $("#source").css({"left": 0});
+            }else if(($sourcePosn.left+65)>=winWidth){
+                $("#source").css({"left": winWidth-65});
+            }else if($sourcePosn.top<=0){
+                $("#source").css({"top": 0});
+            }else if(($sourcePosn.top+65)>=winHeight){
+                $("#source").css({"top": winHeight-65});
             }
             
             var key = event.which;
